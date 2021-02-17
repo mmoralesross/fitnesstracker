@@ -13,7 +13,13 @@ app.use(express.json())
 
 app.use(express.static('public'))
 
-mongoose.connect('mongodb://localhost/workout', {
+
+//connect to atlas or local host
+
+const dbURI = process.env.MONGODB_ATLAS_URI || 'mongodb://localhost/workout'; 
+
+
+mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
